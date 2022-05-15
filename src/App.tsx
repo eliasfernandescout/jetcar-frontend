@@ -1,15 +1,15 @@
 
-import HomePage from './components/HomePage';
+import { BrowserRouter } from 'react-router-dom'
+import Layout from './components/layout/layout'
+import { GlobalStyle } from './styles/global'
 
-function App() {
+function App () {
   return (
-    <div className="App">
-        <p>
-        <HomePage/>
-        </p>
-        
-    </div>
-  );
+    <BrowserRouter>
+      <GlobalStyle/>
+      <Layout/>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App

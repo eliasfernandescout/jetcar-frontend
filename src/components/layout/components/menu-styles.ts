@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const StyledLayout = styled.nav`
+export const MenuStyle = styled.nav`
 
 
 `

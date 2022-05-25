@@ -8,7 +8,9 @@ export default function Events () {
     <div>
       <div>
         <button onClick={handleMyEvent}>Clique Aqui</button>
-
+      </div>
+      <div>
+        <button onClick={() => console.log('Clicou')}>Clique Aqui Tambem</button>
       </div>
 
     </div>

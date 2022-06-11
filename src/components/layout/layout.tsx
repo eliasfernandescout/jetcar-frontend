@@ -1,4 +1,4 @@
-import { RoutesComponent } from '../routes/routes'
+// import { RoutesComponent } from '../routes/routes'
 import Menu from './components/menu'
 import { StyledLayout } from './layout-styles'
 

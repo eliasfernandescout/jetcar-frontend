@@ -1,7 +1,8 @@
 import { Route, Routes } from 'react-router-dom'
 import React from 'react'
-import Home from '../../pages/home/home'
-import { MdHome, MdNotifications, MdEmail, MdSettings, MdLogout, MdOutlineCreate, MdDeleteForever } from 'react-icons/md'
+import Home from '../../pages/Home'
+import { MdHome, MdNotifications, MdEmail, MdSettings, MdLogout, MdCarRental, MdCarRepair, MdAddBox } from 'react-icons/md'
+import { CarRegistration, Cars, Logout, Notifications, RentedCars } from 'pages'
 
 // export const RoutesComponent = () => {
 //   return (
@@ -19,12 +20,12 @@ export enum RoutePath{
   LOG_IN='/login',
   FORGOT_PASSWORD = '/forgot-password',
   HOME='/',
-  MESSAGES='/messages',
+  CARS='/cars',
   INBOX='/inbox',
   NOTIFICATIONS='/notifications',
   SETTINGS='/settings',
-  CREATE_MESSAGE='/create-message',
-  REMOVED_MESSAGES='/removed-messages',
+  CAR_REGISTRATION='/car-registration',
+  RENTED_CARS='/rented-cars',
   LOG_OUT='/logout'
 }
 
@@ -41,7 +42,7 @@ export const defaultSidebarNavIems: SidebarNavItem[] = [
   },
   {
     name: 'inbox',
-    path: RoutePath.MESSAGES,
+    path: RoutePath.INBOX,
     icon: MdEmail
   },
   {
@@ -57,28 +58,67 @@ export const defaultSidebarNavIems: SidebarNavItem[] = [
 
 ]
 
-export const messageSidebarNavItems: SidebarNavItem[] = [
+export const carSidebarNavItems: SidebarNavItem[] = [
   {
     name: 'home',
     path: RoutePath.HOME,
     icon: MdHome
   },
   {
-    name: 'Create message',
-    path: RoutePath.CREATE_MESSAGE,
-    icon: MdOutlineCreate
+    name: 'Registro de Carros',
+    path: RoutePath.CAR_REGISTRATION,
+    icon: MdAddBox
 
   },
   {
-    name: 'Check message',
-    path: RoutePath.MESSAGES,
-    icon: MdEmail
+    name: 'Carros',
+    path: RoutePath.CARS,
+    icon: MdCarRepair
   },
   {
-    name: 'Removed messages',
-    path: RoutePath.REMOVED_MESSAGES,
-    icon: MdDeleteForever
+    name: 'Carros Locados',
+    path: RoutePath.RENTED_CARS,
+    icon: MdCarRental
   }
+]
+
+export const routes: Route[] = [
+  {
+    name: 'home',
+    path: RoutePath.HOME,
+    component: Home,
+    SidebarNavItems: defaultSidebarNavIems
+  },
+  {
+    name: 'logout',
+    path: RoutePath.LOG_OUT,
+    component: Logout
+  },
+  {
+    name: 'notifications',
+    path: RoutePath.NOTIFICATIONS,
+    component: Notifications,
+    SidebarNavItems: defaultSidebarNavIems
+  },
+  {
+    name: 'cars',
+    path: RoutePath.CARS,
+    component: Cars,
+    SidebarNavItems: carSidebarNavItems
+  },
+  {
+    name: 'car-registration',
+    path: RoutePath.CAR_REGISTRATION,
+    component: CarRegistration,
+    SidebarNavItems: carSidebarNavItems
+  },
+  {
+    name: 'rented-cars',
+    path: RoutePath.RENTED_CARS,
+    component: RentedCars,
+    SidebarNavItems: carSidebarNavItems
+  }
+
 ]
 
 export interface SidebarNavItem {

@@ -1,13 +1,27 @@
 
-import { BrowserRouter } from 'react-router-dom'
-import Layout from './components/layout/layout'
-import { GlobalStyle } from './styles/global'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { RoutePath, routes } from 'components/routes/routes'
+import { NoMatch } from 'pages'
+import Layout from 'components/layout/Layout'
 
 function App () {
   return (
     <BrowserRouter>
-      <GlobalStyle/>
-      <Layout/>
+      <Routes>
+        <Route path='/' element={<Layout/>}>
+          {routes.map((route) => (
+            <Route
+              index={RoutePath.HOME === route.path}
+              path={route.path}
+              element={<route.component/>}
+              key={route.name}
+            />
+          ))}
+        </Route>
+        <Route path='*' element={<NoMatch/>}/>
+
+      </Routes>
+
     </BrowserRouter>
   )
 }

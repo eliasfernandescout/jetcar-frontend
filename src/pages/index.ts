@@ -1,15 +1,13 @@
-import Home from './Home'
+import Home from './home/Home'
 import Logout from './Logout'
-import Notifications from './Notifications'
-import CarRegistration from './cars/CarRegistration'
+import CarRegistration from './car-registration/CarRegistration'
 import Cars from './cars/Cars'
-import RentedCars from './cars/RentedCars'
-import { NoMatch } from './NoMatch'
+import RentedCars from './rented-cars/RentedCars'
+import { NoMatch } from './not-found/NotFound'
 
 export {
   Home,
   Logout,
-  Notifications,
   CarRegistration,
   Cars,
   RentedCars,

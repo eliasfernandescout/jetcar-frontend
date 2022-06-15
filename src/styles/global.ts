@@ -1,6 +1,8 @@
 import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
 :root{
     --color-primary: gray;
 }
@@ -12,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 body{
-    
+    font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
 
 }

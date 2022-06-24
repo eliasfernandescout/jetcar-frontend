@@ -1,18 +1,18 @@
-import React, { useState } from 'react'
+import React, { HTMLInputTypeAttribute, useState } from 'react'
 import { carRegistration } from 'services/car-registration.service'
 import { toast } from 'react-toastify'
 
 import * as S from './CarRegistration.style'
 
 function CarRegistration () {
+  const [selectedFile, setSelectedFile] = useState<Blob | string>('')
   const [form, setForm] = useState({
     licensePlate: '',
     dailyPrice: '',
     brand: '',
     model: '',
     year: '',
-    category: '',
-    carImage: ''
+    category: ''
   })
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,6 +40,7 @@ function CarRegistration () {
     formData.append('model', form.model)
     formData.append('year', form.year)
     formData.append('category', form.category)
+    formData.append('file', selectedFile)
 
     const response = await carRegistration(formData)
     if (response.status === 201) {
@@ -50,12 +51,15 @@ function CarRegistration () {
         brand: '',
         model: '',
         year: '',
-        category: '',
-        carImage: ''
+        category: ''
       })
       return
     }
     toast.error('Algo deu errado, tente novamente.')
+  }
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) { setSelectedFile(e.target.files[0]) }
   }
 
   return (
@@ -93,7 +97,7 @@ function CarRegistration () {
       </div>
       <div>
         <label>Imagem do carro:</label>
-        <S.Input type="file" id="carImage" name='carImage' value={form.carImage} onChange={handleChange} />
+        <S.Input type="file" id="file" name='file' onChange={handleFileChange} />
       </div>
       <S.Button>
         Cadastrar
